@@ -78,7 +78,6 @@ class SideMenu extends StatelessWidget {
               title: "Log Out",
               svgSrc: "assets/icons/logout.svg",
               press: () {},
-              color: Colors.red,
               isDarkMode: isDarkMode,
             ),
           ],
