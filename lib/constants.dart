@@ -12,4 +12,5 @@ const secondaryColorLight = Color(0xFFF5F5F5); // Light gray for secondary eleme
 const bgColorLight = Color(0xFFFFFFFF); // White background for light mode
 const warmColorLight = Color.fromARGB(255, 255, 65, 65); // Bright red for light mode
 
+
 const defaultPadding = 16.0;
