@@ -60,10 +60,12 @@ class _MainScreenState extends State<MainScreen> {
     final themeProvider = Provider.of<ThemeProvider>(context);
     final isDarkMode = themeProvider.isDarkMode;
     final iconColor = isDarkMode ? Colors.white : secondaryColorDark;
+    final appBarColor = isDarkMode ? secondaryColorDark : Colors.white;
 
     return Scaffold(
       key: context.read<MenuAppController>().scaffoldKey,
       appBar: AppBar(
+        backgroundColor: appBarColor,
         leading: Responsive.isDesktop(context)
             ? IconButton(
                 icon: Icon(
@@ -95,12 +97,20 @@ class _MainScreenState extends State<MainScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             if (Responsive.isDesktop(context) && isMenuOpen)
-              Expanded(
+              const Expanded(
                 child: SideMenu(),
               ),
             Expanded(
               flex: isMenuOpen ? 5 : 6, // Adjust width dynamically
               child: const DashboardScreen(),
+              // child: const Transaction(),
+              // child: const Task(),
+              // child: const Store(),
+              // child: const Notification(),
+              // child: const Profile(),
+              // child: const Settings(),
+              // child: const Logout(),
+
             ),
           ],
         ),

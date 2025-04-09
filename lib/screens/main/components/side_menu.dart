@@ -52,7 +52,7 @@ class SideMenu extends StatelessWidget {
               isDarkMode: isDarkMode,
             ),
             DrawerListTile(
-              title: "Documents",
+              title: "DashboardScreen",
               svgSrc: "assets/icons/menu_doc.svg",
               press: () {},
               isDarkMode: isDarkMode,
