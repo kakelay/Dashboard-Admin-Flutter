@@ -63,15 +63,6 @@ class ProfileCardWidget extends StatelessWidget {
             ],
           ),
         ),
-        IconButton(
-          icon: Icon(
-            isDarkMode ? Icons.dark_mode : Icons.light_mode,
-            color: iconColor, // Adjust icon color
-          ),
-          onPressed: () {
-            themeProvider.toggleTheme();
-          },
-        ),
       ],
     );
   }
