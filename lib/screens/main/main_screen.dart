@@ -12,7 +12,6 @@ class MainScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       key: context.read<MenuAppController>().scaffoldKey,
-     
       drawer: const SideMenu(),
       body: SafeArea(
         child: Row(
@@ -29,6 +28,7 @@ class MainScreen extends StatelessWidget {
               // It takes 5/6 part of the screen
               flex: 5,
               child: DashboardScreen(),
+              // child: Text('Accounts'),
             ),
           ],
         ),

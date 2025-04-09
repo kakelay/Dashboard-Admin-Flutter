@@ -33,6 +33,13 @@ class SideMenu extends StatelessWidget {
             if (Responsive.isDesktop(context) || Responsive.isTablet(context))
               const Gap(50),
             DrawerListTile(
+              title: "Accounts",
+              svgSrc: "assets/icons/menu_tran.svg",
+              press: () {},
+              isDarkMode: isDarkMode,
+              
+            ),
+            DrawerListTile(
               title: "Transaction",
               svgSrc: "assets/icons/menu_tran.svg",
               press: () {},

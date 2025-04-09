@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
       builder: (context, themeProvider, child) {
         return MaterialApp(
           debugShowCheckedModeBanner: false,
-          title: 'Flutter Admin Panel',
+          // title: 'Flutter Admin Panel',
           themeMode: themeProvider.themeMode, // Apply ThemeMode
           theme: ThemeData.light().copyWith(
             scaffoldBackgroundColor: bgColorLight,
@@ -39,8 +39,10 @@ class MyApp extends StatelessWidget {
           ),
           darkTheme: ThemeData.dark().copyWith(
             scaffoldBackgroundColor: bgColorDark,
-            textTheme: GoogleFonts.poppinsTextTheme(Theme.of(context).textTheme)
-                .apply(bodyColor: Colors.white),
+            textTheme:
+                GoogleFonts.poppinsTextTheme(Theme.of(context).textTheme).apply(
+              bodyColor: Colors.white,
+            ),
             canvasColor: secondaryColorDark,
           ),
           home: const MainScreen(),
