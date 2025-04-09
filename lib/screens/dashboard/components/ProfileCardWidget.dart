@@ -38,9 +38,15 @@ class ProfileCardWidget extends StatelessWidget {
           ),
           child: Row(
             children: [
-              Image.network(
-                profileImageUrl,
-                height: Responsive.isMobile(context) ? 28 : 38,
+              ClipOval(
+                child: Image.network(
+                  profileImageUrl,
+                  height: Responsive.isMobile(context) ? 28 : 38,
+                  width: Responsive.isMobile(context)
+                      ? 28
+                      : 38, // Ensure width matches height
+                  fit: BoxFit.cover, // Ensures the image fills the circle
+                ),
               ),
               if (!Responsive.isMobile(context))
                 Padding(
