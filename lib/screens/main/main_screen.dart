@@ -1,48 +1,18 @@
-// import 'package:flutter/material.dart';
-// import 'package:provider/provider.dart';
-// import '../../controllers/MenuAppController.dart';
-// import '../../responsive.dart';
-// import '../dashboard/dashboard_screen.dart';
-// import 'components/side_menu.dart';
-
-// class MainScreen extends StatelessWidget {
-//   const MainScreen({super.key});
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       key: context.read<MenuAppController>().scaffoldKey,
-//       drawer: const SideMenu(),
-//       body: SafeArea(
-//         child: Row(
-//           crossAxisAlignment: CrossAxisAlignment.start,
-//           children: [
-//             // We want this side menu only for large screen
-//             if (Responsive.isDesktop(context))
-//               const Expanded(
-//                 // default flex = 1
-//                 // and it takes 1/6 part of the screen
-//                 child: SideMenu(),
-//               ),
-//             const Expanded(
-//               // It takes 5/6 part of the screen
-//               flex: 5,
-//               child: DashboardScreen(),
-//               // child: Text('Accounts'),
-//             ),
-//           ],
-//         ),
-//       ),
-//     );
-//   }
-// }
 import 'package:admin_dashboard/constants.dart';
+import 'package:admin_dashboard/screens/dashboard/dashboard_screen.dart';
+import 'package:admin_dashboard/screens/dashboard/logout_screen.dart';
+import 'package:admin_dashboard/screens/dashboard/notification_screen.dart';
+import 'package:admin_dashboard/screens/dashboard/profile_screen.dart';
+import 'package:admin_dashboard/screens/dashboard/settings_screen.dart';
+import 'package:admin_dashboard/screens/dashboard/store_screen.dart';
+import 'package:admin_dashboard/screens/dashboard/task_screen.dart';
+import 'package:admin_dashboard/screens/dashboard/transaction_screen.dart';
 import 'package:admin_dashboard/screens/theme_provider/theme_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../controllers/MenuAppController.dart';
 import '../../responsive.dart';
-import '../dashboard/dashboard_screen.dart';
+
 import 'components/side_menu.dart';
 
 class MainScreen extends StatefulWidget {
@@ -54,18 +24,47 @@ class MainScreen extends StatefulWidget {
 
 class _MainScreenState extends State<MainScreen> {
   bool isMenuOpen = true; // Default to open on desktop
+  Widget currentScreen = DashboardScreen(); // Default screen
+
+  void onMenuItemSelected(String menu) {
+    setState(() {
+      switch (menu) {
+        case "TransactionScreen":
+          currentScreen = const TransactionScreen();
+          break;
+        case "TaskScreen":
+          currentScreen = const TaskScreen();
+          break;
+        case "StoreScreen":
+          currentScreen = const StoreScreen();
+          break;
+        case "NotificationScreen":
+          currentScreen = const NotificationScreen();
+          break;
+        case "ProfileScreen":
+          currentScreen = const ProfileScreen();
+          break;
+        case "SettingsScreen":
+          currentScreen = const SettingsScreen();
+          break;
+        case "LogoutScreen":
+          currentScreen = const LogoutScreen();
+          break;
+        default:
+          currentScreen = const DashboardScreen(); // Fallback to Dashboard
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     final themeProvider = Provider.of<ThemeProvider>(context);
     final isDarkMode = themeProvider.isDarkMode;
     final iconColor = isDarkMode ? Colors.white : secondaryColorDark;
-    final appBarColor = isDarkMode ? secondaryColorDark : Colors.white;
 
     return Scaffold(
       key: context.read<MenuAppController>().scaffoldKey,
       appBar: AppBar(
-        backgroundColor: appBarColor,
         leading: Responsive.isDesktop(context)
             ? IconButton(
                 icon: Icon(
@@ -82,7 +81,7 @@ class _MainScreenState extends State<MainScreen> {
         actions: [
           IconButton(
             icon: Icon(
-              isDarkMode ? Icons.light_mode : Icons.dark_mode,
+              isDarkMode ? Icons.dark_mode : Icons.light_mode,
               color: iconColor,
             ),
             onPressed: () {
@@ -91,26 +90,22 @@ class _MainScreenState extends State<MainScreen> {
           ),
         ],
       ),
-      drawer: !Responsive.isDesktop(context) ? const SideMenu() : null,
+      drawer: !Responsive.isDesktop(context)
+          ? SideMenu(
+              onMenuSelect: onMenuItemSelected,
+            )
+          : null,
       body: SafeArea(
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             if (Responsive.isDesktop(context) && isMenuOpen)
-              const Expanded(
-                child: SideMenu(),
+              Expanded(
+                child: SideMenu(onMenuSelect: onMenuItemSelected),
               ),
             Expanded(
               flex: isMenuOpen ? 5 : 6, // Adjust width dynamically
-              child: const DashboardScreen(),
-              // child: const Transaction(),
-              // child: const Task(),
-              // child: const Store(),
-              // child: const Notification(),
-              // child: const Profile(),
-              // child: const Settings(),
-              // child: const Logout(),
-
+              child: DashboardScreen(), // Display the selected screen
             ),
           ],
         ),
