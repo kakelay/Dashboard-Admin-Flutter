@@ -1,9 +1,6 @@
 import 'package:admin_dashboard/screens/dashboard/components/ProfileCardWidget.dart';
 import 'package:admin_dashboard/screens/dashboard/components/SearchFieldWidget.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-
-import '../../../controllers/MenuAppController.dart';
 import '../../../responsive.dart';
 
 class Header extends StatelessWidget {
@@ -15,11 +12,6 @@ class Header extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        if (!Responsive.isDesktop(context))
-          IconButton(
-            icon: const Icon(Icons.menu),
-            onPressed: context.read<MenuAppController>().controlMenu,
-          ),
         if (!Responsive.isMobile(context))
           Text(
             "Dashboard Admin",

@@ -1,18 +1,10 @@
 import 'package:admin_dashboard/constants.dart';
-import 'package:admin_dashboard/screens/dashboard/dashboard_screen.dart';
-import 'package:admin_dashboard/screens/dashboard/logout_screen.dart';
-import 'package:admin_dashboard/screens/dashboard/notification_screen.dart';
-import 'package:admin_dashboard/screens/dashboard/profile_screen.dart';
-import 'package:admin_dashboard/screens/dashboard/settings_screen.dart';
-import 'package:admin_dashboard/screens/dashboard/store_screen.dart';
-import 'package:admin_dashboard/screens/dashboard/task_screen.dart';
-import 'package:admin_dashboard/screens/dashboard/transaction_screen.dart';
 import 'package:admin_dashboard/screens/theme_provider/theme_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../controllers/MenuAppController.dart';
 import '../../responsive.dart';
-
+import '../dashboard/dashboard_screen.dart';
 import 'components/side_menu.dart';
 
 class MainScreen extends StatefulWidget {
@@ -24,37 +16,6 @@ class MainScreen extends StatefulWidget {
 
 class _MainScreenState extends State<MainScreen> {
   bool isMenuOpen = true; // Default to open on desktop
-  Widget currentScreen = DashboardScreen(); // Default screen
-
-  void onMenuItemSelected(String menu) {
-    setState(() {
-      switch (menu) {
-        case "TransactionScreen":
-          currentScreen = const TransactionScreen();
-          break;
-        case "TaskScreen":
-          currentScreen = const TaskScreen();
-          break;
-        case "StoreScreen":
-          currentScreen = const StoreScreen();
-          break;
-        case "NotificationScreen":
-          currentScreen = const NotificationScreen();
-          break;
-        case "ProfileScreen":
-          currentScreen = const ProfileScreen();
-          break;
-        case "SettingsScreen":
-          currentScreen = const SettingsScreen();
-          break;
-        case "LogoutScreen":
-          currentScreen = const LogoutScreen();
-          break;
-        default:
-          currentScreen = const DashboardScreen(); // Fallback to Dashboard
-      }
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -90,22 +51,18 @@ class _MainScreenState extends State<MainScreen> {
           ),
         ],
       ),
-      drawer: !Responsive.isDesktop(context)
-          ? SideMenu(
-              onMenuSelect: onMenuItemSelected,
-            )
-          : null,
+      drawer: !Responsive.isDesktop(context) ? const SideMenu() : null,
       body: SafeArea(
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             if (Responsive.isDesktop(context) && isMenuOpen)
-              Expanded(
-                child: SideMenu(onMenuSelect: onMenuItemSelected),
+              const Expanded(
+                child: SideMenu(),
               ),
             Expanded(
-              flex: isMenuOpen ? 5 : 6, // Adjust width dynamically
-              child: DashboardScreen(), // Display the selected screen
+              flex: isMenuOpen ? 5 : 6,
+              child: const DashboardScreen(),
             ),
           ],
         ),
