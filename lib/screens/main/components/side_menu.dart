@@ -1,13 +1,110 @@
 import 'package:admin_dashboard/constants.dart'; // Import the constants file
 import 'package:admin_dashboard/responsive.dart';
+import 'package:admin_dashboard/screens/dashboard/dashboard_screen.dart';
+import 'package:admin_dashboard/screens/main/notification_screen.dart';
+import 'package:admin_dashboard/screens/main/profile_screen.dart';
+import 'package:admin_dashboard/screens/main/setting_screen.dart';
+import 'package:admin_dashboard/screens/main/store_screen.dart';
+import 'package:admin_dashboard/screens/main/task_screen.dart';
+import 'package:admin_dashboard/screens/main/transaction_screen.dart';
 import 'package:admin_dashboard/screens/theme_provider/theme_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
 import 'package:provider/provider.dart';
 
+// class SideMenu extends StatelessWidget {
+//   const SideMenu({Key? key}) : super(key: key);
+
+//   @override
+//   Widget build(BuildContext context) {
+//     final themeProvider = Provider.of<ThemeProvider>(context);
+//     final isDarkMode = themeProvider.isDarkMode;
+
+//     return Container(
+//       decoration: BoxDecoration(
+//         color: isDarkMode ? secondaryColorDark : Colors.white,
+//         boxShadow: [
+//           BoxShadow(
+//             color: Colors.black.withOpacity(0.1), // Light shadow
+//             blurRadius: 10,
+//             spreadRadius: 5,
+//             offset: const Offset(2, 0), // Shadow on the right side
+//           ),
+//         ],
+//       ),
+//       child: Drawer(
+//         backgroundColor: isDarkMode ? secondaryColorDark : Colors.white,
+//         child: ListView(
+//           children: [
+//             if (Responsive.isDesktop(context) || Responsive.isTablet(context))
+//               const Gap(50),
+//             DrawerListTile(
+//               title: "Accounts",
+//               svgSrc: "assets/icons/menu_tran.svg",
+//               press: () {},
+//               isDarkMode: isDarkMode,
+
+//             ),
+//             DrawerListTile(
+//               title: "Transaction",
+//               svgSrc: "assets/icons/menu_tran.svg",
+//               press: () {},
+//               isDarkMode: isDarkMode,
+//             ),
+//             DrawerListTile(
+//               title: "Task",
+//               svgSrc: "assets/icons/menu_task.svg",
+//               press: () {},
+//               isDarkMode: isDarkMode,
+//             ),
+//             DrawerListTile(
+//               title: "DashboardScreen",
+//               svgSrc: "assets/icons/menu_doc.svg",
+//               press: () {},
+//               isDarkMode: isDarkMode,
+//             ),
+//             DrawerListTile(
+//               title: "Store",
+//               svgSrc: "assets/icons/menu_store.svg",
+//               press: () {},
+//               isDarkMode: isDarkMode,
+//             ),
+//             DrawerListTile(
+//               title: "Notification",
+//               svgSrc: "assets/icons/menu_notification.svg",
+//               press: () {},
+//               isDarkMode: isDarkMode,
+//             ),
+//             DrawerListTile(
+//               title: "Profile",
+//               svgSrc: "assets/icons/menu_profile.svg",
+//               press: () {},
+//               isDarkMode: isDarkMode,
+//             ),
+//             DrawerListTile(
+//               title: "Settings",
+//               svgSrc: "assets/icons/menu_setting.svg",
+//               press: () {},
+//               isDarkMode: isDarkMode,
+//             ),
+//             DrawerListTile(
+//               title: "Log Out",
+//               svgSrc: "assets/icons/logout.svg",
+//               press: () {},
+//               isDarkMode: isDarkMode,
+//             ),
+//           ],
+//         ),
+//       ),
+//     );
+//   }
+// }
 class SideMenu extends StatelessWidget {
-  const SideMenu({Key? key}) : super(key: key);
+  final Function(Widget) onMenuItemSelected;
+
+  const SideMenu({Key? key, required this.onMenuItemSelected})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -19,10 +116,10 @@ class SideMenu extends StatelessWidget {
         color: isDarkMode ? secondaryColorDark : Colors.white,
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.1), // Light shadow
+            color: Colors.black.withOpacity(0.1),
             blurRadius: 10,
             spreadRadius: 5,
-            offset: const Offset(2, 0), // Shadow on the right side
+            offset: const Offset(2, 0),
           ),
         ],
       ),
@@ -33,58 +130,45 @@ class SideMenu extends StatelessWidget {
             if (Responsive.isDesktop(context) || Responsive.isTablet(context))
               const Gap(50),
             DrawerListTile(
-              title: "Accounts",
-              svgSrc: "assets/icons/menu_tran.svg",
-              press: () {},
+              title: "Dashboard",
+              svgSrc: "assets/icons/menu_doc.svg",
+              press: () => onMenuItemSelected(const DashboardScreen()),
               isDarkMode: isDarkMode,
-              
             ),
             DrawerListTile(
               title: "Transaction",
               svgSrc: "assets/icons/menu_tran.svg",
-              press: () {},
+              press: () => onMenuItemSelected(const TransactionScreen()),
               isDarkMode: isDarkMode,
             ),
             DrawerListTile(
               title: "Task",
               svgSrc: "assets/icons/menu_task.svg",
-              press: () {},
-              isDarkMode: isDarkMode,
-            ),
-            DrawerListTile(
-              title: "DashboardScreen",
-              svgSrc: "assets/icons/menu_doc.svg",
-              press: () {},
+              press: () => onMenuItemSelected(const TaskScreen()),
               isDarkMode: isDarkMode,
             ),
             DrawerListTile(
               title: "Store",
               svgSrc: "assets/icons/menu_store.svg",
-              press: () {},
+              press: () => onMenuItemSelected(const StoreScreen()),
               isDarkMode: isDarkMode,
             ),
             DrawerListTile(
               title: "Notification",
               svgSrc: "assets/icons/menu_notification.svg",
-              press: () {},
+              press: () => onMenuItemSelected(const NotificationScreen()),
               isDarkMode: isDarkMode,
             ),
             DrawerListTile(
               title: "Profile",
               svgSrc: "assets/icons/menu_profile.svg",
-              press: () {},
+              press: () => onMenuItemSelected(const ProfileScreen()),
               isDarkMode: isDarkMode,
             ),
             DrawerListTile(
               title: "Settings",
               svgSrc: "assets/icons/menu_setting.svg",
-              press: () {},
-              isDarkMode: isDarkMode,
-            ),
-            DrawerListTile(
-              title: "Log Out",
-              svgSrc: "assets/icons/logout.svg",
-              press: () {},
+              press: () => onMenuItemSelected(const SettingScreen()),
               isDarkMode: isDarkMode,
             ),
           ],
