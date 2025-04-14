@@ -6,7 +6,7 @@ import 'package:admin_dashboard/screens/main/profile_screen.dart';
 import 'package:admin_dashboard/screens/main/setting_screen.dart';
 import 'package:admin_dashboard/screens/main/store_screen.dart';
 import 'package:admin_dashboard/screens/main/task_screen.dart';
-import 'package:admin_dashboard/screens/main/transaction_screen.dart';
+import 'package:admin_dashboard/screens/transactions/transaction_screen.dart';
 import 'package:admin_dashboard/screens/theme_provider/theme_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -72,7 +72,7 @@ class _SideMenuState extends State<SideMenu> {
               isSelected: widget.selectedIndex == 1,
               title: "Transaction",
               svgSrc: "assets/icons/menu_tran.svg",
-              press: () => updateSelectedIndex(1, const TransactionScreen()),
+              press: () => updateSelectedIndex(1, TransactionScreen()),
               isDarkMode: isDarkMode,
             ),
             DrawerListTile(

@@ -1,0 +1,28 @@
+{
+  "transactions": [
+    {
+      "name": "Amazon",
+      "date": "29/12/2024",
+      "time": "03:00 PM",
+      "invoiceId": "INV-007",
+      "amount": 89.99,
+      "status": "Success"
+    },
+    {
+      "name": "Gym Membership",
+      "date": "28/12/2024",
+      "time": "05:10 PM",
+      "invoiceId": "INV-478",
+      "amount": 50.0,
+      "status": "Pending"
+    },
+    {
+      "name": "Spotify",
+      "date": "27/12/2024",
+      "time": "02:15 PM",
+      "invoiceId": "INV-222",
+      "amount": 9.99,
+      "status": "Failed"
+    }
+  ]
+}
