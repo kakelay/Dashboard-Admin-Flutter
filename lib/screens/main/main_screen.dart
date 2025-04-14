@@ -109,6 +109,13 @@ class _MainScreenState extends State<MainScreen> {
     return Scaffold(
       key: context.read<MenuAppController>().scaffoldKey,
       appBar: AppBar(
+        title: Responsive.isMobile(context)
+            ? Text(
+                "Dashboard Admin",
+                style: Theme.of(context).textTheme.titleLarge,
+              )
+            : null,
+        centerTitle: true,
         leading: Responsive.isDesktop(context)
             ? IconButton(
                 icon: Icon(
