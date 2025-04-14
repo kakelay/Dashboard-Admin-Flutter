@@ -94,7 +94,7 @@ class _MainScreenState extends State<MainScreen> {
   bool isMenuOpen = true;
   Widget _selectedScreen = const DashboardScreen(); // Default screen
 
-  void _changeScreen(Widget screen) {
+  void _setScreen(Widget screen) {
     setState(() {
       _selectedScreen = screen;
     });
@@ -135,7 +135,7 @@ class _MainScreenState extends State<MainScreen> {
         ],
       ),
       drawer: !Responsive.isDesktop(context)
-          ? SideMenu(onMenuItemSelected: _changeScreen)
+          ? SideMenu(onMenuTap: _setScreen)
           : null,
       body: SafeArea(
         child: Row(
@@ -143,7 +143,7 @@ class _MainScreenState extends State<MainScreen> {
           children: [
             if (Responsive.isDesktop(context) && isMenuOpen)
               Expanded(
-                child: SideMenu(onMenuItemSelected: _changeScreen),
+                child: SideMenu(onMenuTap: _setScreen),
               ),
             Expanded(
               flex: isMenuOpen ? 5 : 6,

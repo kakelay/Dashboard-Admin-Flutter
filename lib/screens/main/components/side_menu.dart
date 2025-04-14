@@ -101,10 +101,9 @@ import 'package:provider/provider.dart';
 //   }
 // }
 class SideMenu extends StatelessWidget {
-  final Function(Widget) onMenuItemSelected;
+  final Function(Widget) onMenuTap;
 
-  const SideMenu({Key? key, required this.onMenuItemSelected})
-      : super(key: key);
+  const SideMenu({Key? key, required this.onMenuTap}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -132,43 +131,43 @@ class SideMenu extends StatelessWidget {
             DrawerListTile(
               title: "Dashboard",
               svgSrc: "assets/icons/menu_doc.svg",
-              press: () => onMenuItemSelected(const DashboardScreen()),
+              press: () => onMenuTap(const DashboardScreen()),
               isDarkMode: isDarkMode,
             ),
             DrawerListTile(
               title: "Transaction",
               svgSrc: "assets/icons/menu_tran.svg",
-              press: () => onMenuItemSelected(const TransactionScreen()),
+              press: () => onMenuTap(const TransactionScreen()),
               isDarkMode: isDarkMode,
             ),
             DrawerListTile(
               title: "Task",
               svgSrc: "assets/icons/menu_task.svg",
-              press: () => onMenuItemSelected(const TaskScreen()),
+              press: () => onMenuTap(const TaskScreen()),
               isDarkMode: isDarkMode,
             ),
             DrawerListTile(
               title: "Store",
               svgSrc: "assets/icons/menu_store.svg",
-              press: () => onMenuItemSelected(const StoreScreen()),
+              press: () => onMenuTap(const StoreScreen()),
               isDarkMode: isDarkMode,
             ),
             DrawerListTile(
               title: "Notification",
               svgSrc: "assets/icons/menu_notification.svg",
-              press: () => onMenuItemSelected(const NotificationScreen()),
+              press: () => onMenuTap(const NotificationScreen()),
               isDarkMode: isDarkMode,
             ),
             DrawerListTile(
               title: "Profile",
               svgSrc: "assets/icons/menu_profile.svg",
-              press: () => onMenuItemSelected(const ProfileScreen()),
+              press: () => onMenuTap(const ProfileScreen()),
               isDarkMode: isDarkMode,
             ),
             DrawerListTile(
               title: "Settings",
               svgSrc: "assets/icons/menu_setting.svg",
-              press: () => onMenuItemSelected(const SettingScreen()),
+              press: () => onMenuTap(const SettingScreen()),
               isDarkMode: isDarkMode,
             ),
           ],
