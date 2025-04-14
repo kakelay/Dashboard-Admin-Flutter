@@ -1,4 +1,4 @@
-import 'package:admin_dashboard/constants.dart'; // Import the constants file
+import 'package:admin_dashboard/constants.dart';
 import 'package:admin_dashboard/responsive.dart';
 import 'package:admin_dashboard/screens/dashboard/dashboard_screen.dart';
 import 'package:admin_dashboard/screens/main/notification_screen.dart';
@@ -13,97 +13,28 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
 import 'package:provider/provider.dart';
 
-// class SideMenu extends StatelessWidget {
-//   const SideMenu({Key? key}) : super(key: key);
+class SideMenu extends StatefulWidget {
+  final int selectedIndex;
+  final Function(int, Widget) onMenuTap;
 
-//   @override
-//   Widget build(BuildContext context) {
-//     final themeProvider = Provider.of<ThemeProvider>(context);
-//     final isDarkMode = themeProvider.isDarkMode;
+  const SideMenu({
+    Key? key,
+    required this.onMenuTap,
+    required this.selectedIndex,
+  }) : super(key: key);
 
-//     return Container(
-//       decoration: BoxDecoration(
-//         color: isDarkMode ? secondaryColorDark : Colors.white,
-//         boxShadow: [
-//           BoxShadow(
-//             color: Colors.black.withOpacity(0.1), // Light shadow
-//             blurRadius: 10,
-//             spreadRadius: 5,
-//             offset: const Offset(2, 0), // Shadow on the right side
-//           ),
-//         ],
-//       ),
-//       child: Drawer(
-//         backgroundColor: isDarkMode ? secondaryColorDark : Colors.white,
-//         child: ListView(
-//           children: [
-//             if (Responsive.isDesktop(context) || Responsive.isTablet(context))
-//               const Gap(50),
-//             DrawerListTile(
-//               title: "Accounts",
-//               svgSrc: "assets/icons/menu_tran.svg",
-//               press: () {},
-//               isDarkMode: isDarkMode,
+  @override
+  State<SideMenu> createState() => _SideMenuState();
+}
 
-//             ),
-//             DrawerListTile(
-//               title: "Transaction",
-//               svgSrc: "assets/icons/menu_tran.svg",
-//               press: () {},
-//               isDarkMode: isDarkMode,
-//             ),
-//             DrawerListTile(
-//               title: "Task",
-//               svgSrc: "assets/icons/menu_task.svg",
-//               press: () {},
-//               isDarkMode: isDarkMode,
-//             ),
-//             DrawerListTile(
-//               title: "DashboardScreen",
-//               svgSrc: "assets/icons/menu_doc.svg",
-//               press: () {},
-//               isDarkMode: isDarkMode,
-//             ),
-//             DrawerListTile(
-//               title: "Store",
-//               svgSrc: "assets/icons/menu_store.svg",
-//               press: () {},
-//               isDarkMode: isDarkMode,
-//             ),
-//             DrawerListTile(
-//               title: "Notification",
-//               svgSrc: "assets/icons/menu_notification.svg",
-//               press: () {},
-//               isDarkMode: isDarkMode,
-//             ),
-//             DrawerListTile(
-//               title: "Profile",
-//               svgSrc: "assets/icons/menu_profile.svg",
-//               press: () {},
-//               isDarkMode: isDarkMode,
-//             ),
-//             DrawerListTile(
-//               title: "Settings",
-//               svgSrc: "assets/icons/menu_setting.svg",
-//               press: () {},
-//               isDarkMode: isDarkMode,
-//             ),
-//             DrawerListTile(
-//               title: "Log Out",
-//               svgSrc: "assets/icons/logout.svg",
-//               press: () {},
-//               isDarkMode: isDarkMode,
-//             ),
-//           ],
-//         ),
-//       ),
-//     );
-//   }
-// }
-class SideMenu extends StatelessWidget {
-  final Function(Widget) onMenuTap;
-
-  const SideMenu({Key? key, required this.onMenuTap}) : super(key: key);
+class _SideMenuState extends State<SideMenu> {
+  void updateSelectedIndex(int index, Widget screen) {
+    widget.onMenuTap(
+      index,
+      screen,
+    );
+    // Send index + screen back to parent
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -129,45 +60,59 @@ class SideMenu extends StatelessWidget {
             if (Responsive.isDesktop(context) || Responsive.isTablet(context))
               const Gap(50),
             DrawerListTile(
+              index: 0,
+              isSelected: widget.selectedIndex == 0,
               title: "Dashboard",
               svgSrc: "assets/icons/menu_doc.svg",
-              press: () => onMenuTap(const DashboardScreen()),
+              press: () => updateSelectedIndex(0, const DashboardScreen()),
               isDarkMode: isDarkMode,
             ),
             DrawerListTile(
+              index: 1,
+              isSelected: widget.selectedIndex == 1,
               title: "Transaction",
               svgSrc: "assets/icons/menu_tran.svg",
-              press: () => onMenuTap(const TransactionScreen()),
+              press: () => updateSelectedIndex(1, const TransactionScreen()),
               isDarkMode: isDarkMode,
             ),
             DrawerListTile(
+              index: 2,
+              isSelected: widget.selectedIndex == 2,
               title: "Task",
               svgSrc: "assets/icons/menu_task.svg",
-              press: () => onMenuTap(const TaskScreen()),
+              press: () => updateSelectedIndex(2, const TaskScreen()),
               isDarkMode: isDarkMode,
             ),
             DrawerListTile(
+              index: 3,
+              isSelected: widget.selectedIndex == 3,
               title: "Store",
               svgSrc: "assets/icons/menu_store.svg",
-              press: () => onMenuTap(const StoreScreen()),
+              press: () => updateSelectedIndex(3, const StoreScreen()),
               isDarkMode: isDarkMode,
             ),
             DrawerListTile(
+              index: 4,
+              isSelected: widget.selectedIndex == 4,
               title: "Notification",
               svgSrc: "assets/icons/menu_notification.svg",
-              press: () => onMenuTap(const NotificationScreen()),
+              press: () => updateSelectedIndex(4, const NotificationScreen()),
               isDarkMode: isDarkMode,
             ),
             DrawerListTile(
+              index: 5,
+              isSelected: widget.selectedIndex == 5,
               title: "Profile",
               svgSrc: "assets/icons/menu_profile.svg",
-              press: () => onMenuTap(const ProfileScreen()),
+              press: () => updateSelectedIndex(5, const ProfileScreen()),
               isDarkMode: isDarkMode,
             ),
             DrawerListTile(
+              index: 6,
+              isSelected: widget.selectedIndex == 6,
               title: "Settings",
               svgSrc: "assets/icons/menu_setting.svg",
-              press: () => onMenuTap(const SettingScreen()),
+              press: () => updateSelectedIndex(6, const SettingScreen()),
               isDarkMode: isDarkMode,
             ),
           ],
@@ -184,31 +129,35 @@ class DrawerListTile extends StatelessWidget {
     required this.svgSrc,
     required this.press,
     required this.isDarkMode,
-    this.color, // Default color handled dynamically
+    required this.index,
+    required this.isSelected,
   }) : super(key: key);
 
   final String title, svgSrc;
   final VoidCallback press;
   final bool isDarkMode;
-  final Color? color;
+  final int index;
+  final bool isSelected;
 
   @override
   Widget build(BuildContext context) {
-    return ListTile(
-      onTap: press,
-      horizontalTitleGap: 0.0,
-      leading: SvgPicture.asset(
-        svgSrc,
-        colorFilter: ColorFilter.mode(
-          isDarkMode ? Colors.white : Colors.blue,
-          BlendMode.srcIn,
+    final selectedColor = isDarkMode ? Colors.blueGrey[700] : Colors.blue[50];
+    final iconColor =
+        isSelected ? Colors.blue : (isDarkMode ? Colors.white : Colors.black);
+
+    return Container(
+      color: isSelected ? selectedColor : Colors.transparent,
+      child: ListTile(
+        onTap: press,
+        horizontalTitleGap: 0.0,
+        leading: SvgPicture.asset(
+          svgSrc,
+          colorFilter: ColorFilter.mode(iconColor, BlendMode.srcIn),
+          height: 16,
         ),
-        height: 16,
-      ),
-      title: Text(
-        title,
-        style: TextStyle(
-          color: color ?? (isDarkMode ? Colors.white : Colors.black),
+        title: Text(
+          title,
+          style: TextStyle(color: iconColor),
         ),
       ),
     );
