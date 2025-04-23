@@ -7,7 +7,7 @@ import 'package:admin_dashboard/app/modules/screens/main/setting_screen.dart';
 import 'package:admin_dashboard/app/modules/screens/main/store_screen.dart';
 import 'package:admin_dashboard/app/modules/screens/main/task_screen.dart';
 import 'package:admin_dashboard/app/modules/screens/transactions/transaction_screen.dart';
-import 'package:admin_dashboard/app/modules/screens/theme_provider/theme_provider.dart';
+import 'package:admin_dashboard/app/cores/themes/theme_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';

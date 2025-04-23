@@ -1,4 +1,4 @@
-import 'package:admin_dashboard/app/modules/screens/theme_provider/theme_provider.dart';
+import 'package:admin_dashboard/app/cores/themes/theme_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';

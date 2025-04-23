@@ -1,7 +1,7 @@
 import 'package:admin_dashboard/app/data/Services/data_service.dart';
 import 'package:admin_dashboard/app/data/models/transaction_model.dart';
 import 'package:admin_dashboard/responsive.dart';
-import 'package:admin_dashboard/app/modules/screens/theme_provider/theme_provider.dart';
+import 'package:admin_dashboard/app/cores/themes/theme_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

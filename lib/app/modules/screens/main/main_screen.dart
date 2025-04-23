@@ -1,5 +1,5 @@
 import 'package:admin_dashboard/constants.dart';
-import 'package:admin_dashboard/app/modules/screens/theme_provider/theme_provider.dart';
+import 'package:admin_dashboard/app/cores/themes/theme_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../../controllers/MenuAppController.dart';
