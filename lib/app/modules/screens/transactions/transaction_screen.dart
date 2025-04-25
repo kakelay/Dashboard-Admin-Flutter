@@ -1,5 +1,6 @@
 import 'package:admin_dashboard/app/data/Services/data_service.dart';
 import 'package:admin_dashboard/app/data/models/transaction_model.dart';
+import 'package:admin_dashboard/app/modules/screens/dashboard/components/header.dart';
 import 'package:admin_dashboard/responsive.dart';
 import 'package:admin_dashboard/app/cores/themes/theme_provider.dart';
 import 'package:flutter/material.dart';
@@ -223,16 +224,19 @@ class TransactionScreen extends StatelessWidget {
 
     return Scaffold(
       backgroundColor: isDarkMode ? Colors.black : Colors.grey[100],
-      appBar: AppBar(
-        title: const Text('Transactions'),
-        backgroundColor: backgroundColor,
-        iconTheme: IconThemeData(color: textColor),
-        titleTextStyle: TextStyle(
-          color: textColor,
-          fontSize: 20,
-          fontWeight: FontWeight.w600,
+      appBar: PreferredSize(
+        preferredSize: const Size.fromHeight(kToolbarHeight),
+        child: AppBar(
+          automaticallyImplyLeading: false,
+          elevation: 1,
+          backgroundColor: backgroundColor,
+          flexibleSpace: const SafeArea(
+            child: Header(
+              title: "Transactions",
+              showProfile: false,
+            ),
+          ),
         ),
-        elevation: 1,
       ),
       body: FutureBuilder<List<TransactionModel>>(
         future: _dataService.loadTransactions(),

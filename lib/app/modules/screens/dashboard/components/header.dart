@@ -4,19 +4,28 @@ import 'package:flutter/material.dart';
 import '../../../../../responsive.dart';
 
 class Header extends StatelessWidget {
+  final String? title;
+  final Widget? titleWidget;
+  final bool showProfile;
+
   const Header({
     Key? key,
+    this.title,
+    this.titleWidget,
+    this.showProfile = true,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    Widget displayTitle = titleWidget ??
+        Text(
+          title ?? "",
+          style: Theme.of(context).textTheme.titleLarge,
+        );
+
     return Row(
       children: [
-        if (!Responsive.isMobile(context))
-          Text(
-            "Dashboard Admin",
-            style: Theme.of(context).textTheme.titleLarge,
-          ),
+        if (!Responsive.isMobile(context)) displayTitle,
         if (!Responsive.isMobile(context))
           Spacer(flex: Responsive.isDesktop(context) ? 2 : 1),
         Expanded(
@@ -30,11 +39,12 @@ class Header extends StatelessWidget {
             },
           ),
         ),
-        const ProfileCardWidget(
-          profileImageUrl:
-              "https://avatars.githubusercontent.com/u/110383694?v=4",
-          userName: "KakElay",
-        ),
+        if (showProfile)
+          const ProfileCardWidget(
+            profileImageUrl:
+                "https://avatars.githubusercontent.com/u/110383694?v=4",
+            userName: "KakElay",
+          ),
       ],
     );
   }
