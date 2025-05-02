@@ -1,4 +1,3 @@
-import 'package:admin_dashboard/app/cores/values/app_colors.dart';
 import 'package:admin_dashboard/app/modules/shared_widgets/index.dart';
 import 'package:admin_dashboard/constants.dart';
 import 'package:admin_dashboard/app/cores/themes/theme_provider.dart';
