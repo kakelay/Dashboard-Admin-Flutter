@@ -1,3 +1,5 @@
+import 'package:admin_dashboard/app/cores/values/app_colors.dart';
+import 'package:admin_dashboard/app/modules/shared_widgets/index.dart';
 import 'package:admin_dashboard/constants.dart';
 import 'package:admin_dashboard/app/cores/themes/theme_provider.dart';
 import 'package:flutter/material.dart';
@@ -57,12 +59,15 @@ class _MainScreenState extends State<MainScreen> {
               )
             : null,
         actions: [
-          IconButton(
-            icon: Icon(
-              isDarkMode ? Icons.dark_mode : Icons.light_mode,
-              color: iconColor,
+          RoundedButton(
+            text: isDarkMode ? 'Light Mode' : 'Dark Mode',
+            textColor: isDarkMode ? Colors.white : Colors.black,
+            fillColor: Colors.transparent,
+            leadingIcon: Icon(
+              isDarkMode ? Icons.light_mode : Icons.dark_mode,
+              color: isDarkMode ? Colors.white : Colors.black,
             ),
-            onPressed: () {
+            onPress: () {
               themeProvider.toggleTheme();
             },
           ),

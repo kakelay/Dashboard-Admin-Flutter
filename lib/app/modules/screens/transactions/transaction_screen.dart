@@ -231,9 +231,12 @@ class TransactionScreen extends StatelessWidget {
           elevation: 1,
           backgroundColor: backgroundColor,
           flexibleSpace: const SafeArea(
-            child: Header(
-              title: "Transactions",
-              showProfile: false,
+            child: Padding(
+              padding: EdgeInsets.only(left: 16),
+              child: Header(
+                title: "Transactions",
+                showProfile: false,
+              ),
             ),
           ),
         ),
