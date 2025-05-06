@@ -62,6 +62,14 @@ class _TransactionScreenState extends State<TransactionScreen> {
     Color backgroundColor,
     Color shadowColor,
   ) {
+    if (transactions.isEmpty) {
+      return const Center(
+        child: Text(
+          "No data found",
+          style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+        ),
+      );
+    }
     return ListView.builder(
       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
       itemCount: transactions.length,
@@ -164,6 +172,15 @@ class _TransactionScreenState extends State<TransactionScreen> {
   }
 
   Widget _buildDesktopView(List<TransactionModel> transactions) {
+    if (transactions.isEmpty) {
+      return const Center(
+        child: Text(
+          "No data found",
+          style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+        ),
+      );
+    }
+
     return LayoutBuilder(
       builder: (context, constraints) {
         return SingleChildScrollView(
