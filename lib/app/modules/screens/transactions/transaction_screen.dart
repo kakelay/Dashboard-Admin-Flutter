@@ -262,10 +262,10 @@ class _TransactionScreenState extends State<TransactionScreen> {
                 showProfile: false,
                 onSearch: (query) {
                   final filtered = _allTransactions.where((tx) {
-                    return tx.invoiceId
-                            .toLowerCase()
-                            .contains(query.toLowerCase()) ||
-                        tx.name.toLowerCase().contains(query.toLowerCase());
+                    final lowerQuery = query.toLowerCase();
+                    return tx.invoiceId.toLowerCase().contains(lowerQuery) ||
+                        tx.name.toLowerCase().contains(lowerQuery) ||
+                        tx.date.toLowerCase().contains(lowerQuery);
                   }).toList();
 
                   setState(() {
