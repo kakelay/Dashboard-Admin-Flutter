@@ -1,3 +1,5 @@
+import 'dart:collection';
+
 import 'package:admin_dashboard/app/data/Services/transaction_service.dart';
 import 'package:admin_dashboard/app/data/models/transaction_model.dart';
 import 'package:admin_dashboard/app/modules/screens/dashboard/components/header.dart';
@@ -6,10 +8,17 @@ import 'package:admin_dashboard/app/cores/themes/theme_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class TransactionScreen extends StatelessWidget {
-  final DataService _dataService = DataService();
-
+class TransactionScreen extends StatefulWidget {
   TransactionScreen({super.key});
+
+  @override
+  State<TransactionScreen> createState() => _TransactionScreenState();
+}
+
+class _TransactionScreenState extends State<TransactionScreen> {
+  final DataService _dataService = DataService();
+  List<TransactionModel> _allTransactions = [];
+  List<TransactionModel> _filteredTransactions = [];
 
   Color getStatusColor(String status) {
     switch (status.toLowerCase()) {
@@ -225,17 +234,30 @@ class TransactionScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: isDarkMode ? Colors.black : Colors.grey[100],
       appBar: PreferredSize(
-        preferredSize: const Size.fromHeight(kToolbarHeight),
+        preferredSize: Size.fromHeight(kToolbarHeight),
         child: AppBar(
           automaticallyImplyLeading: false,
           elevation: 1,
           backgroundColor: backgroundColor,
-          flexibleSpace: const SafeArea(
+          flexibleSpace: SafeArea(
             child: Padding(
-              padding: EdgeInsets.only(left: 16),
+              padding: const EdgeInsets.only(left: 16),
               child: Header(
                 title: "Transactions",
                 showProfile: false,
+                onSearch: (query) {
+                  final filtered = _allTransactions.where((tx) {
+                    return tx.invoiceId
+                            .toLowerCase()
+                            .contains(query.toLowerCase()) ||
+                        tx.name.toLowerCase().contains(query.toLowerCase());
+                  }).toList();
+
+                  setState(() {
+                    _filteredTransactions =
+                        query.isEmpty ? _allTransactions : filtered;
+                  });
+                },
               ),
             ),
           ),
@@ -251,7 +273,13 @@ class TransactionScreen extends StatelessWidget {
             return const Center(child: Text("No data available"));
           }
 
-          final transactions = snapshot.data!;
+          if (_allTransactions.isEmpty) {
+            _allTransactions = snapshot.data!;
+            _filteredTransactions = _allTransactions;
+          }
+
+          final transactions = _filteredTransactions;
+
           return Responsive(
             mobile: _buildMobileView(
               transactions,

@@ -3,23 +3,38 @@ import 'package:admin_dashboard/app/modules/screens/dashboard/components/SearchF
 import 'package:flutter/material.dart';
 import '../../../../../responsive.dart';
 
-class Header extends StatelessWidget {
+class Header extends StatefulWidget {
   final String? title;
   final Widget? titleWidget;
   final bool showProfile;
+  final ValueChanged<String>? onSearch;
 
   const Header({
     Key? key,
     this.title,
     this.titleWidget,
     this.showProfile = true,
+    this.onSearch,
   }) : super(key: key);
 
   @override
+  State<Header> createState() => _HeaderState();
+}
+
+class _HeaderState extends State<Header> {
+  final TextEditingController _searchController = TextEditingController();
+
+  @override
+  void dispose() {
+    _searchController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    Widget displayTitle = titleWidget ??
+    Widget displayTitle = widget.titleWidget ??
         Text(
-          title ?? "",
+          widget.title ?? "",
           style: Theme.of(context).textTheme.titleLarge,
         );
 
@@ -30,16 +45,11 @@ class Header extends StatelessWidget {
           Spacer(flex: Responsive.isDesktop(context) ? 2 : 1),
         Expanded(
           child: SearchFieldWidget(
-            controller: TextEditingController(),
-            onChanged: (value) {
-              print("Search input: $value");
-            },
-            onSearch: () {
-              print("Search button tapped");
-            },
+            controller: _searchController,
+            onChanged: widget.onSearch,
           ),
         ),
-        if (showProfile)
+        if (widget.showProfile)
           const ProfileCardWidget(
             profileImageUrl:
                 "https://avatars.githubusercontent.com/u/110383694?v=4",
