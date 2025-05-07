@@ -8,6 +8,7 @@ class Header extends StatefulWidget {
   final Widget? titleWidget;
   final bool showProfile;
   final ValueChanged<String>? onSearch;
+  final String? hintext;
 
   const Header({
     Key? key,
@@ -15,6 +16,7 @@ class Header extends StatefulWidget {
     this.titleWidget,
     this.showProfile = true,
     this.onSearch,
+    this.hintext,
   }) : super(key: key);
 
   @override
@@ -47,6 +49,7 @@ class _HeaderState extends State<Header> {
           child: SearchFieldWidget(
             controller: _searchController,
             onChanged: widget.onSearch,
+            hintext: widget.hintext ?? 'Search',
           ),
         ),
         if (widget.showProfile)

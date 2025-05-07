@@ -259,13 +259,17 @@ class _TransactionScreenState extends State<TransactionScreen> {
               padding: const EdgeInsets.only(left: 16),
               child: Header(
                 title: "Transactions",
+                hintext: 'Search Name,Data,Invoice,Status',
                 showProfile: false,
                 onSearch: (query) {
                   final filtered = _allTransactions.where((tx) {
                     final lowerQuery = query.toLowerCase();
                     return tx.invoiceId.toLowerCase().contains(lowerQuery) ||
                         tx.name.toLowerCase().contains(lowerQuery) ||
-                        tx.date.toLowerCase().contains(lowerQuery);
+                        tx.date.toLowerCase().contains(lowerQuery) ||
+                        tx.time.toLowerCase().contains(lowerQuery) ||
+                        tx.status.toLowerCase().contains(lowerQuery) ||
+                        tx.name.toLowerCase().contains(lowerQuery);
                   }).toList();
 
                   setState(() {
