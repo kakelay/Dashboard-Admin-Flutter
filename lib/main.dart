@@ -1,4 +1,4 @@
-import 'package:admin_dashboard/app/modules/screens/main/main_screen.dart';
+import 'package:admin_dashboard/app/modules/screens/main_screen/main_screen.dart';
 import 'package:admin_dashboard/app/cores/themes/theme_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';

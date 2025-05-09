@@ -1,5 +1,5 @@
-import 'package:admin_dashboard/app/modules/screens/dashboard/components/ProfileCardWidget.dart';
-import 'package:admin_dashboard/app/modules/screens/dashboard/components/SearchFieldWidget.dart';
+import 'package:admin_dashboard/app/modules/screens/dashboard_screen/components/ProfileCardWidget.dart';
+import 'package:admin_dashboard/app/modules/screens/dashboard_screen/components/SearchFieldWidget.dart';
 import 'package:flutter/material.dart';
 import '../../../../../responsive.dart';
 
