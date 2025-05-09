@@ -10,6 +10,7 @@ class SearchFieldWidget extends StatelessWidget {
   final ValueChanged<String>? onChanged;
   final VoidCallback? onSearch;
   final String? hintext;
+  final TextStyle? hintStyle;
 
   const SearchFieldWidget({
     Key? key,
@@ -17,6 +18,7 @@ class SearchFieldWidget extends StatelessWidget {
     this.onChanged,
     this.onSearch,
     this.hintext,
+    this.hintStyle,
   }) : super(key: key);
 
   @override
@@ -29,7 +31,7 @@ class SearchFieldWidget extends StatelessWidget {
       onChanged: onChanged,
       decoration: InputDecoration(
         hintText: hintext ?? 'Search',
-        hintStyle: TextStyle(
+        hintStyle: hintStyle ?? TextStyle(
           color: isDarkMode ? Colors.white70 : Colors.black54,
         ),
         fillColor: isDarkMode

@@ -1,3 +1,4 @@
+import 'package:admin_dashboard/app/cores/themes/app_style.dart';
 import 'package:admin_dashboard/app/data/Services/transaction_service.dart';
 import 'package:admin_dashboard/app/data/models/transaction_model.dart';
 import 'package:admin_dashboard/app/modules/screens/dashboard/components/header.dart';
@@ -249,7 +250,7 @@ class _TransactionScreenState extends State<TransactionScreen> {
     return Scaffold(
       backgroundColor: isDarkMode ? Colors.black : Colors.grey[100],
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(kToolbarHeight),
+        preferredSize: const Size.fromHeight(kToolbarHeight),
         child: AppBar(
           automaticallyImplyLeading: false,
           elevation: 1,
@@ -260,6 +261,9 @@ class _TransactionScreenState extends State<TransactionScreen> {
               child: Header(
                 title: "Transactions",
                 hintext: 'Search Name,Data,Invoice,Status',
+                hintStyle: const TextStyle(
+                  fontSize: AppStyle.SPACING_12,
+                ),
                 showProfile: false,
                 onSearch: (query) {
                   final filtered = _allTransactions.where((tx) {

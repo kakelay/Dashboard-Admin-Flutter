@@ -14,8 +14,7 @@ class DashboardScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: SingleChildScrollView(
-        primary: false,
+      child: Padding(
         padding: const EdgeInsets.all(defaultPadding),
         child: Column(
           children: [
@@ -24,32 +23,37 @@ class DashboardScreen extends StatelessWidget {
               showProfile: true,
             ),
             const SizedBox(height: defaultPadding),
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Expanded(
-                  flex: 5,
-                  child: Column(
-                    children: [
-                      const MyFiles(),
-                      const SizedBox(height: defaultPadding),
-                      const RecentFiles(),
-                      if (Responsive.isMobile(context))
-                        const SizedBox(height: defaultPadding),
-                      if (Responsive.isMobile(context)) const StorageDetails(),
-                    ],
-                  ),
+            // Wrap scrollable content in Expanded so it doesn't overflow
+            Expanded(
+              child: SingleChildScrollView(
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Expanded(
+                      flex: 5,
+                      child: Column(
+                        children: [
+                          const MyFiles(),
+                          const SizedBox(height: defaultPadding),
+                          const RecentFiles(),
+                          if (Responsive.isMobile(context))
+                            const SizedBox(height: defaultPadding),
+                          if (Responsive.isMobile(context))
+                            const StorageDetails(),
+                        ],
+                      ),
+                    ),
+                    if (!Responsive.isMobile(context))
+                      const SizedBox(width: defaultPadding),
+                    if (!Responsive.isMobile(context))
+                      const Expanded(
+                        flex: 2,
+                        child: StorageDetails(),
+                      ),
+                  ],
                 ),
-                if (!Responsive.isMobile(context))
-                  const SizedBox(width: defaultPadding),
-                // On Mobile means if the screen is less than 850 we don't want to show it
-                if (!Responsive.isMobile(context))
-                  const Expanded(
-                    flex: 2,
-                    child: StorageDetails(),
-                  ),
-              ],
-            )
+              ),
+            ),
           ],
         ),
       ),

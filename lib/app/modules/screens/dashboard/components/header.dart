@@ -9,6 +9,7 @@ class Header extends StatefulWidget {
   final bool showProfile;
   final ValueChanged<String>? onSearch;
   final String? hintext;
+  final TextStyle? hintStyle;
 
   const Header({
     Key? key,
@@ -17,6 +18,7 @@ class Header extends StatefulWidget {
     this.showProfile = true,
     this.onSearch,
     this.hintext,
+    this.hintStyle,
   }) : super(key: key);
 
   @override
@@ -50,6 +52,7 @@ class _HeaderState extends State<Header> {
             controller: _searchController,
             onChanged: widget.onSearch,
             hintext: widget.hintext ?? 'Search',
+            hintStyle: widget.hintStyle,
           ),
         ),
         if (widget.showProfile)
