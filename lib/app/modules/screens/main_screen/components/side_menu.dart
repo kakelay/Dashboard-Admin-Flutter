@@ -5,7 +5,7 @@ import 'package:admin_dashboard/app/modules/screens/notification_screen/notifica
 import 'package:admin_dashboard/app/modules/screens/profile_screen/profile_screen.dart';
 import 'package:admin_dashboard/app/modules/screens/setting_screen/setting_screen.dart';
 import 'package:admin_dashboard/app/modules/screens/store_screen/store_screen.dart';
-import 'package:admin_dashboard/app/modules/screens/main_screen/task_screen.dart';
+import 'package:admin_dashboard/app/modules/screens/task_screen/task_screen.dart';
 import 'package:admin_dashboard/app/modules/screens/transaction_screen/transaction_screen.dart';
 import 'package:admin_dashboard/app/cores/themes/theme_provider.dart';
 import 'package:flutter/material.dart';
