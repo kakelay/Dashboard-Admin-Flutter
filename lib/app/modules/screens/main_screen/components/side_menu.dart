@@ -1,8 +1,8 @@
 import 'package:admin_dashboard/constants.dart';
 import 'package:admin_dashboard/responsive.dart';
 import 'package:admin_dashboard/app/modules/screens/dashboard_screen/dashboard_screen.dart';
-import 'package:admin_dashboard/app/modules/screens/main_screen/notification_screen.dart';
-import 'package:admin_dashboard/app/modules/screens/main_screen/profile_screen.dart';
+import 'package:admin_dashboard/app/modules/screens/notification_screen/notification_screen.dart';
+import 'package:admin_dashboard/app/modules/screens/profile_screen/profile_screen.dart';
 import 'package:admin_dashboard/app/modules/screens/setting_screen/setting_screen.dart';
 import 'package:admin_dashboard/app/modules/screens/main_screen/store_screen.dart';
 import 'package:admin_dashboard/app/modules/screens/main_screen/task_screen.dart';

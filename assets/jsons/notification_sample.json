@@ -1,0 +1,24 @@
+{
+  "notifications": [
+    {
+      "title": "New comment on your post",
+      "time": "5 mins ago"
+    },
+    {
+      "title": "New like on your photo",
+      "time": "2 hours ago"
+    },
+    {
+      "title": "New follower: John Doe",
+      "time": "1 day ago"
+    },
+    {
+      "title": "New message from Sarah",
+      "time": "3 days ago"
+    },
+    {
+      "title": "Your order has been shipped",
+      "time": "1 week ago"
+    }
+  ]
+}

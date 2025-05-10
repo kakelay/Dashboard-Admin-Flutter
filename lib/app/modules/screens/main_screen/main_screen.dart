@@ -1,6 +1,3 @@
-import 'package:admin_dashboard/app/modules/shared_widgets/index.dart';
-import 'package:admin_dashboard/constants.dart';
-import 'package:admin_dashboard/app/cores/themes/theme_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../../controllers/MenuAppController.dart';
@@ -30,10 +27,6 @@ class _MainScreenState extends State<MainScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final themeProvider = Provider.of<ThemeProvider>(context);
-    final isDarkMode = themeProvider.isDarkMode;
-    final iconColor = isDarkMode ? Colors.white : secondaryColorDark;
-
     return Scaffold(
       key: context.read<MenuAppController>().scaffoldKey,
       appBar: AppBar(
@@ -42,13 +35,12 @@ class _MainScreenState extends State<MainScreen> {
                 "Dashboard Admin",
                 style: Theme.of(context).textTheme.titleLarge,
               )
-            : null,
-        centerTitle: true,
+            : const Text('Menu'),
+        centerTitle: Responsive.isMobile(context),
         leading: Responsive.isDesktop(context)
             ? IconButton(
                 icon: Icon(
                   isMenuOpen ? Icons.menu_open : Icons.menu,
-                  color: iconColor,
                 ),
                 onPressed: () {
                   setState(() {
@@ -57,20 +49,6 @@ class _MainScreenState extends State<MainScreen> {
                 },
               )
             : null,
-        actions: [
-          RoundedButton(
-            text: isDarkMode ? 'Light Mode' : 'Dark Mode',
-            textColor: isDarkMode ? Colors.white : Colors.black,
-            fillColor: Colors.transparent,
-            leadingIcon: Icon(
-              isDarkMode ? Icons.light_mode : Icons.dark_mode,
-              color: isDarkMode ? Colors.white : Colors.black,
-            ),
-            onPress: () {
-              themeProvider.toggleTheme();
-            },
-          ),
-        ],
       ),
       drawer: !Responsive.isDesktop(context)
           ? SideMenu(
