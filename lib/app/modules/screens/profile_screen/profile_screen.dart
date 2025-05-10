@@ -82,7 +82,7 @@ class ProfileScreen extends StatelessWidget {
           ),
           const SizedBox(height: 16),
           Text(
-            'Admin Name',
+            'KakElay',
             style: TextStyle(
               fontSize: 20,
               fontWeight: FontWeight.bold,
@@ -91,7 +91,7 @@ class ProfileScreen extends StatelessWidget {
           ),
           const SizedBox(height: 8),
           Text(
-            'admin@example.com',
+            'kakelay18052002@gmail.com',
             textAlign: TextAlign.center,
             style: TextStyle(
               fontSize: 14,
@@ -146,10 +146,13 @@ class ProfileScreen extends StatelessWidget {
         _infoRow('Full Name', 'Admin Name', isDarkMode),
         _infoRow('Email', 'admin@example.com', isDarkMode),
         _infoRow('Role', 'Administrator', isDarkMode),
-        _infoRow('Phone', '+855 12 345 678', isDarkMode),
+        _infoRow('Phone', '+855 10600261', isDarkMode),
         _infoRow('Joined Date', 'January 1, 2024', isDarkMode),
-        _infoRow('Address', '123 Admin St, City, Country', isDarkMode),
-        _infoRow('Date of Birth', 'January 1, 1990', isDarkMode),
+        _infoRow(
+            'Address',
+            'Sangkat Chrang Chamreh Pir is a village in Chrang Chamreh Pir, Ruessei Kaev, Phnom Penh. Sangkat Chrang Chamreh Pir is situated nearby to the hamlet Phum Kiloumaet Leik Prammuoy, as well as near the village Sangkat Chrang Chamreh Muoy.',
+            isDarkMode),
+        _infoRow('Date of Birth', 'January 1, 2002', isDarkMode),
         _infoRow(
             'Short Bio',
             'Experienced administrator with a passion for management and leadership. Enthusiastic about technology and education.',

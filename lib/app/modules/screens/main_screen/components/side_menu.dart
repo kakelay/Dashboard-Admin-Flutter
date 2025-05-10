@@ -4,7 +4,7 @@ import 'package:admin_dashboard/app/modules/screens/dashboard_screen/dashboard_s
 import 'package:admin_dashboard/app/modules/screens/notification_screen/notification_screen.dart';
 import 'package:admin_dashboard/app/modules/screens/profile_screen/profile_screen.dart';
 import 'package:admin_dashboard/app/modules/screens/setting_screen/setting_screen.dart';
-import 'package:admin_dashboard/app/modules/screens/main_screen/store_screen.dart';
+import 'package:admin_dashboard/app/modules/screens/store_screen/store_screen.dart';
 import 'package:admin_dashboard/app/modules/screens/main_screen/task_screen.dart';
 import 'package:admin_dashboard/app/modules/screens/transaction_screen/transaction_screen.dart';
 import 'package:admin_dashboard/app/cores/themes/theme_provider.dart';
@@ -78,17 +78,17 @@ class _SideMenuState extends State<SideMenu> {
             DrawerListTile(
               index: 2,
               isSelected: widget.selectedIndex == 2,
-              title: "Task",
-              svgSrc: "assets/icons/menu_task.svg",
-              press: () => updateSelectedIndex(2, const TaskScreen()),
+              title: "Store",
+              svgSrc: "assets/icons/menu_store.svg",
+              press: () => updateSelectedIndex(2, const StoreScreen()),
               isDarkMode: isDarkMode,
             ),
             DrawerListTile(
               index: 3,
               isSelected: widget.selectedIndex == 3,
-              title: "Store",
-              svgSrc: "assets/icons/menu_store.svg",
-              press: () => updateSelectedIndex(3, const StoreScreen()),
+              title: "Task",
+              svgSrc: "assets/icons/menu_task.svg",
+              press: () => updateSelectedIndex(3, const TaskScreen()),
               isDarkMode: isDarkMode,
             ),
             DrawerListTile(
