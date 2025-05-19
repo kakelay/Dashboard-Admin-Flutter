@@ -242,13 +242,13 @@ class _TransactionScreenState extends State<TransactionScreen> {
     final themeProvider = Provider.of<ThemeProvider>(context);
     final isDarkMode = themeProvider.isDarkMode;
 
-    final backgroundColor = isDarkMode ? Colors.grey[900]! : Colors.white;
+    final backgroundColor = isDarkMode ? Colors.black12 : Colors.white;
     final textColor = isDarkMode ? Colors.white : Colors.black87;
     final iconColor = isDarkMode ? Colors.white70 : Colors.grey[700]!;
     final shadowColor = isDarkMode ? Colors.black26 : Colors.black12;
 
     return Scaffold(
-      backgroundColor: isDarkMode ? Colors.black : Colors.grey[100],
+      backgroundColor: isDarkMode ? Colors.black12 : Colors.grey[100],
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(kToolbarHeight),
         child: AppBar(

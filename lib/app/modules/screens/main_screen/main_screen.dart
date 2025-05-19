@@ -30,6 +30,7 @@ class _MainScreenState extends State<MainScreen> {
     return Scaffold(
       key: context.read<MenuAppController>().scaffoldKey,
       appBar: AppBar(
+        backgroundColor: Colors.black12,
         title: Responsive.isMobile(context)
             ? Text(
                 "Dashboard Admin",

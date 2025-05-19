@@ -21,6 +21,7 @@ class DashboardScreen extends StatelessWidget {
             const Header(
               title: "Dashboard Admin",
               showProfile: true,
+              showCalendar: false,
             ),
             const SizedBox(height: defaultPadding),
             // Wrap scrollable content in Expanded so it doesn't overflow

@@ -39,7 +39,7 @@ class _SettingScreenState extends State<SettingScreen> {
           width: 900,
           height: 600,
           decoration: BoxDecoration(
-            color: isDarkMode ? Colors.black12 : Colors.grey.shade200,
+            color: isDarkMode ? Colors.grey[850] : Colors.white,
             borderRadius: BorderRadius.circular(12),
           ),
           child: Padding(

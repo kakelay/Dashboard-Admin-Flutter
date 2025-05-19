@@ -198,7 +198,7 @@
       "time": "04:18 PM",
       "invoiceId": "INV-1025",
       "amount": 10,
-      "status": "Pending"
+      "status": "failed"
     },
     {
       "name": "ហាងលក់ស្បែកជើង សែនសុខ",
@@ -222,7 +222,7 @@
       "time": "03:45 PM",
       "invoiceId": "INV-1028",
       "amount": 10,
-      "status": "Pending"
+      "status": "failed"
     },
     {
       "name": "ហាងលក់អាំងផ្លែឈើ ស្ទឹងមានជ័យ",
@@ -238,7 +238,7 @@
       "time": "11:59 AM",
       "invoiceId": "INV-1030",
       "amount": 10,
-      "status": "Pending"
+      "status": "failed"
     },
     {
       "name": "ហាងលក់គ្រឿងកាសែត ភ្នំពេញថ្មី",
