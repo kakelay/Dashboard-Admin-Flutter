@@ -7,9 +7,11 @@ class Header extends StatefulWidget {
   final String? title;
   final Widget? titleWidget;
   final bool showProfile;
+  final bool showCalendar;
   final ValueChanged<String>? onSearch;
   final String? hintext;
   final TextStyle? hintStyle;
+  final ValueChanged<DateTime>? onDateSelected;
 
   const Header({
     Key? key,
@@ -19,6 +21,8 @@ class Header extends StatefulWidget {
     this.onSearch,
     this.hintext,
     this.hintStyle,
+    this.showCalendar = true,
+    this.onDateSelected,
   }) : super(key: key);
 
   @override
@@ -32,6 +36,27 @@ class _HeaderState extends State<Header> {
   void dispose() {
     _searchController.dispose();
     super.dispose();
+  }
+
+  Future<void> _selectDate(BuildContext context) async {
+    final DateTime? pickedDate = await showDatePicker(
+      context: context,
+      initialDate: DateTime.now(),
+      firstDate: DateTime(2000),
+      lastDate: DateTime(2101),
+    );
+
+    if (pickedDate != null) {
+      final formattedDate =
+          "${pickedDate.year}-${pickedDate.month.toString().padLeft(2, '0')}-${pickedDate.day.toString().padLeft(2, '0')}";
+
+      setState(() {
+        _searchController.text = formattedDate;
+      });
+
+      widget.onSearch?.call(formattedDate);
+      widget.onDateSelected?.call(pickedDate);
+    }
   }
 
   @override
@@ -60,6 +85,11 @@ class _HeaderState extends State<Header> {
             profileImageUrl:
                 "https://avatars.githubusercontent.com/u/110383694?v=4",
             userName: "KakElay",
+          ),
+        if (widget.showCalendar)
+          IconButton(
+            icon: const Icon(Icons.calendar_month),
+            onPressed: () => _selectDate(context),
           ),
       ],
     );
