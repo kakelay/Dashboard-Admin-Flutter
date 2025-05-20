@@ -1,6 +1,6 @@
-// no_internet_page.dart
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:lottie/lottie.dart';
 
 class NoInternetPage extends StatelessWidget {
   const NoInternetPage({super.key});
@@ -8,14 +8,20 @@ class NoInternetPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("No Internet")),
-      body: const Center(
+      body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(Icons.wifi_off, size: 100, color: Colors.red),
-            Gap(20),
-            Text("No Internet Connection", style: TextStyle(fontSize: 18)),
+            // Lottie animation instead of the Icon
+            Lottie.asset(
+              'assets/lotties/no-internet.json',
+              width: 200,
+              height: 200,
+              fit: BoxFit.contain,
+            ),
+            const Gap(20),
+            const Text("No Internet Connection",
+                style: TextStyle(fontSize: 18)),
           ],
         ),
       ),

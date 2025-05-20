@@ -61,6 +61,7 @@ class _MyAppState extends State<MyApp> {
 
   Future<void> checkInitialConnection() async {
     final result = await Connectivity().checkConnectivity();
+    // ignore: unrelated_type_equality_checks
     final bool newStatus = result != ConnectivityResult.none;
     if (mounted) {
       setState(() {
@@ -109,7 +110,7 @@ class _MyAppState extends State<MyApp> {
                 .apply(bodyColor: Colors.white),
             canvasColor: secondaryColorDark,
           ),
-          home: isConnected ? const MainScreen() : const NoInternetPage(),
+          home: !isConnected ? const MainScreen() : const NoInternetPage(),
         );
       },
     );
