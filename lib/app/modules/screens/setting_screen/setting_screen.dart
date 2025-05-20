@@ -34,48 +34,50 @@ class _SettingScreenState extends State<SettingScreen> {
         ),
       ),
       backgroundColor: isDarkMode ? Colors.black12 : Colors.white24,
-      body: Center(
-        child: Container(
-          width: 900,
-          height: 600,
-          decoration: BoxDecoration(
-            color: isDarkMode ? Colors.grey[850] : Colors.white,
-            borderRadius: BorderRadius.circular(12),
-          ),
-          child: Padding(
-            padding: const EdgeInsets.all(20),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                _dropdownRow(
-                  'Theme',
-                  ['Light', 'Dark'],
-                  selectedTheme,
-                  isDarkMode ? Colors.white : Colors.black,
-                ),
-                const SizedBox(height: 10),
-                _switchRow(
-                  'Always show code when using data analyst',
-                  true,
-                  isDarkMode ? Colors.white : Colors.black,
-                ),
-                _switchRow(
-                  'Show follow-up suggestions in chats',
-                  true,
-                  isDarkMode ? Colors.white : Colors.black,
-                ),
-                _dropdownRow(
-                  'Language',
-                  ['Auto-detect', 'English', 'Khmer'],
-                  'Auto-detect',
-                  isDarkMode ? Colors.white : Colors.black,
-                ),
-                const SizedBox(height: 20),
-                _buttonRow('Archived chats', 'Manage', isDarkMode),
-                _buttonRow('Archive all chats', 'Archive all', isDarkMode),
-                _buttonRow('Delete all chats', 'Delete all', isDarkMode,
-                    color: Colors.red),
-              ],
+      body: SingleChildScrollView(
+        child: Center(
+          child: Container(
+            width: 900,
+            height: 600,
+            decoration: BoxDecoration(
+              color: isDarkMode ? Colors.grey[850] : Colors.white,
+              borderRadius: BorderRadius.circular(12),
+            ),
+            child: Padding(
+              padding: const EdgeInsets.all(20),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  _dropdownRow(
+                    'Theme',
+                    ['Light', 'Dark'],
+                    selectedTheme,
+                    isDarkMode ? Colors.white : Colors.black,
+                  ),
+                  const SizedBox(height: 10),
+                  _switchRow(
+                    'Always show code when using data analyst',
+                    true,
+                    isDarkMode ? Colors.white : Colors.black,
+                  ),
+                  _switchRow(
+                    'Show follow-up suggestions in chats',
+                    true,
+                    isDarkMode ? Colors.white : Colors.black,
+                  ),
+                  _dropdownRow(
+                    'Language',
+                    ['Auto-detect', 'English', 'Khmer'],
+                    'Auto-detect',
+                    isDarkMode ? Colors.white : Colors.black,
+                  ),
+                  const SizedBox(height: 20),
+                  _buttonRow('Archived chats', 'Manage', isDarkMode),
+                  _buttonRow('Archive all chats', 'Archive all', isDarkMode),
+                  _buttonRow('Delete all chats', 'Delete all', isDarkMode,
+                      color: Colors.red),
+                ],
+              ),
             ),
           ),
         ),
