@@ -88,6 +88,6 @@ class _RootPageState extends State<RootPage> {
       );
     }
 
-    return !isConnected ? const MainScreen() : const NoInternetPage();
+    return isConnected ? const MainScreen() : const NoInternetPage();
   }
 }
