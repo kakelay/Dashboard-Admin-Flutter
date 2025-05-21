@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:admin_dashboard/app/modules/screens/no_internet_screen/success_internet_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -107,6 +108,7 @@ class _MyAppState extends State<MyApp> {
             canvasColor: secondaryColorDark,
           ),
           home: isConnected ? const MainScreen() : const NoInternetPage(),
+          // home:isConnected ? const MainScreen() : const SuccessInternetScreen(),
         );
       },
     );
