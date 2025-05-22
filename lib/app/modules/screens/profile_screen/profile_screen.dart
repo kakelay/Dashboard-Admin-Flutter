@@ -157,13 +157,6 @@ class ProfileScreen extends StatelessWidget {
             'Short Bio',
             'Experienced administrator with a passion for management and leadership. Enthusiastic about technology and education.',
             isDarkMode),
-        const SizedBox(height: 16),
-        ElevatedButton(
-          onPressed: () {
-            // Function to handle file upload
-          },
-          child: const Text('Upload Profile Picture'),
-        ),
       ],
     );
   }
