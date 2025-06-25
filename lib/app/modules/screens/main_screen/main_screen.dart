@@ -1,3 +1,4 @@
+import 'package:admin_dashboard/app/modules/screens/notification_screen/notification_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../../controllers/MenuAppController.dart';
@@ -17,6 +18,9 @@ class _MainScreenState extends State<MainScreen> {
   bool isMenuOpen = true;
   Widget currentScreen = const DashboardScreen(); // Default screen
   int selectedIndex = 0;
+
+  // Simulate notification count
+  int notificationCount = 1;
 
   void _setScreen(int index, Widget screen) {
     setState(() {
@@ -50,6 +54,43 @@ class _MainScreenState extends State<MainScreen> {
                 },
               )
             : null,
+        actions: [
+          Stack(
+            children: [
+              IconButton(
+                padding: const EdgeInsets.only(right: 20),
+                onPressed: () {
+                  _setScreen(4, const NotificationScreen());
+                },
+                icon: const Icon(Icons.notifications),
+              ),
+              if (notificationCount > 0)
+                Positioned(
+                  right: 10,
+                  top: 2,
+                  child: Container(
+                    padding: const EdgeInsets.all(2),
+                    decoration: BoxDecoration(
+                      color: Colors.red,
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    constraints: const BoxConstraints(
+                      minWidth: 16,
+                      minHeight: 16,
+                    ),
+                    child: Text(
+                      notificationCount.toString(),
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontSize: 10,
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
+                ),
+            ],
+          ),
+        ],
       ),
       drawer: !Responsive.isDesktop(context)
           ? SideMenu(
